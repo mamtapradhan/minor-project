@@ -1,0 +1,311 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphics}
+\usepackage[papeer=a4papere, left=3cm, right=3cm, top=2cm]{geometry}
+\usepackage{blindtext}
+\usepackage{multicol}
+\usepackage{pgfplots}
+\usepackage{float}
+\usepackage{biblatex} %Imports biblatex package
+\usepackage{amsmath}
+\addbibresource{bib.bib} %import the bibliography file
+\usepackage{listings}
+\usepackage{mathtools}
+
+
+\title{\textbf{Generating Uniform and Gradient 2D Lattices}}
+\author{Under guidance Of Dr. Nishant Kumar Singh, Asst. Professor\\
+Abhishek Kumar,Jyothi Madhusudhan, Pratikhya Patel, Sajal Harmukh \\ \testit{Department of Biomedical Engineering} \\National Institute of Technology, Raipur }
+\date{November 2021}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract} \textbf{
+    One tissue regeneration, the geometry of bone scaffolds plays a crucial role. The mechanical strength of the scaffold is determined by this architecture, especially the pore size and form. The comparable model of the trabecular structure consisted of repeatable unit cells arranged in layers to fill the volume of the chosen scaffold. Cubic, triangular, and hexagonal polyhedral are among the three common unit cell structures studied. The use of porous cellular structures will provide mechanical and biological conditions closer to the host bone in the engineering of bone tissue. In this minor project we are discussing about: generating uniform and gradient 2D lattices and image-based uniform and gradient porous scaffold. First of all we will discuss about the bone and it’s anatomy, scaffold and the designing of scaffold, spatially variant lattice and gradient, what are the materials used to design a porous scaffold and then code and the result. At the end we will discuss about the overall result, current challenges and progress and limitations.} \\ \\ 
+    \textbf{\textit{Keywords-Bone scaffold, spatially variant lattice, Gradient, Meta material, Photonic material}}   
+\end{abstract}
+
+\section{Introduction}
+\subsection{Bone and it’s anatomy}
+A bone is a rigid organ that constitutes part of the vertebrate skeleton in animals. The part of the bone's organic connective tissue makes it resilient and the bone can thus afford resistance to tensile forces. A layer of connective tissue called the periosteum is composed of the outside of the long bone.The inner portion of the long bone is the medullary cavity, consisting (in adults) of yellow marrow with the inner center of the bone cavity. The long-bones are tubular in shape, such as the femur and tibia, and consist of following terms \cite{bourne2014biochemistry}.
+\begin{itemize} \item
+Diaphysis:  At the central part of Bone there’s a rod like structure i.e.shaft of bone which is called Diaphysis.
+\end{itemize}
+\begin{itemize} \item
+Epiphysis:  The rounded plate like structure which is present at both the end i.e. thetop and bottom of Bone is known as Epiphysis.
+\end{itemize}
+\begin{itemize} \item
+Metaphysis:  The cartilage which is sandwiched between epiphysis and the diaphysisis known as Metaphysis.
+\end{itemize}
+\begin{itemize} \item
+Epiphysical line:  At complete growth of bone, A line is visible which is called Epiphysicanl line.
+\end{itemize}
+For better visualization all we can say is that Bone is basically a dumbbell kind of structure.
+\subsection{Scaffolds}
+Scaffolds are the masterpiece of engineering of bone tissue. It’s a 3D matrix that allows and stimulates the attachment and proliferation of osteoinducible cells on their surfaces is a bone scaffold.For making an ideal scaffold for BTE transplant we need to consider above parameters (given in Fig. 1)\cite{ghassemi2018current}.
+\begin{figure}
+    \centering
+    \includegraphics[width= 16cm]{WhatsApp Image 2021-11-27 at 8.10.19 PM.jpeg}
+    \caption{Requirements of Scaffold}
+    \label{fig:my_label}
+\end{figure}
+
+
+\begin{itemize} \item
+The primary roles of scaffold are to serve as an adhesion substrate for cells, facilitate the localization and delivery of cells when implanted, and provide temporary mechanical support to the newly grown tissue by defining and maintaining a 3D structure.
+\end{itemize}
+\begin{itemize} \item
+The scaffold needs to perfectly  match the deffect site within the patient's body. Medical imaging technologies are typically used to gather implant site external geometric data.
+\end{itemize}
+\begin{itemize} \item
+An ideal scaffold suitable for BTE applications should allow or improve cell viability, attachment, osteogenic differentiation, vascularization, host integration and, where necessary, load bearing. In addition, it should allow for easy handling in the operation theatre without extensive preparatory procedures and allow for minimally invasive implantation. Industrial methods and techniques can be sterilizable \cite{ghassemi2018current}}.
+\end{itemize}
+
+\section{Methodology}
+\subsection{Scaffold Designing}
+For comparison, different 3D internal architectures were designed using a CAD software (SolidWorks, Fusion) to achieve:
+\begin{itemize} \item
+No enclosed pores after unit cell replication.
+\end{itemize}
+\begin{itemize} \item
+Different strut orientations [0◦/45◦/90◦] along the loading directions.
+\end{itemize}
+\begin{itemize} \item
+Internal architecture similar to trabecular bone. Based on polyhedral geometries, three or four 3D internal architectures were designed
+\end{itemize}
+
+\textbf{Small scale unit cells}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=10cm]{WhatsApp Image 2021-11-27 at 8.10.28 PM.jpeg}
+    \caption{External and internal architectures of unit cells}
+    \label{fig:my_label}
+\end{figure}
+
+The dimension of the unit (L) is 2 mm and the size of the strut (t) is 400 meter sand 500 meters. By repeating these unit cells along the x, y, and z axies, the cellular structures were planned and fabricated. To explore the mechanical properties, rectangular (10 mm * 20 mm) and cylindrical ( 10 mm * 30 mm) cellular structures were prepared  shown inn In Fig. 2.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=10cm]{WhatsApp Image 2021-11-27 at 8.10.37 PM (1).jpeg}
+    \caption{2D and 3D view of Cubic, Triangular and hexagonal unit cell}
+    \label{fig:my_label}
+\end{figure}
+
+There are 3-unit cell structure is used in paper: Cubic,Triangular ,Hexagonal.
+The parameter which has been used to compare these scaffolds design is:
+\begin{itemize} \item
+Pore size: 120, 340 and 600 micrometer    
+\end{itemize}
+\begin{itemize} \item
+Porosity: 30%, 50% and 70% has been used   
+\end{itemize}
+\begin{itemize} \item
+Geometry: Cubic, triangular, Hexagonal, Octahedron, pillar octahedron, truncated, octahedron etc    
+\end{itemize}
+\begin{itemize} \item
+Rod and plate orientation  
+\end{itemize}
+\begin{itemize} \item
+ Material propertie   
+\end{itemize}
+
+\subsection{Porous Structure}
+A porous structure contains pores (voids). The skeletal portion of the material is often called the "matrix" or "frame". The pores are typically filled with a fluid (liquid or gas). A porous medium is most often characterized by its porosity. Pore structure is a general term used to describe the porosity, pore size, pore size distribution, and pore morphology of a porous medium.
+The three-dimensional (3D) porous structure has always received considerable attention in different fields, such as materials science and bone tissue engineering, due to its ability to enhance the mechanical properties as well as its excellent bio mimetic design as bone scaffolds. For example, when forming this structure inside materials with a high Young's modulus, it can help enhance the deformability of the material system and improve the fracture strain \cite{gelinsky2008porous}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7cm]{WhatsApp Image 2021-11-27 at 8.10.47 PM.jpeg}
+    \caption{Porous Structure of Bone}
+    \label{fig:my_label}
+\end{figure}
+
+\subsection{Building of porous structure Scaffold implicit surface-based method}
+Implicit-surface-based (ISB) architectures are attractive candidates for designing biomorphic scaffold structures because they overcome the limitations of traditional chemistry-based methods (such as phase separation and salt-leaching, due to the uncontrollable porous morphology) and existing time-consuming computer aided design and fabrication strategies (due to the complicated processes of structural modeling and path planning) \cite{yang2017building}. 
+ISB methods are helpful to precisely control porous architectures to quantitatively balance mass transport and mechanical function. One type of ISB method, the triply periodic minimal surfaces (TPMS) method allows for scaffold structures to be simply represented using a simple mathematical inequality. Using this method, 
+different pore shapes and structural features, including pore sizes and porosities, can be introduced as needed, and the resulting models can be readily fabricated using AM techniques \cite{hollister2002optimal}.
+Regarding recent methods, much work has focused on generating regular structures and simple graded structures using periodic functions. Yoo proposed an effective method for arranging porosities using a thin-plate radial basis function based on distance field and TPMS-based functions. Fryazinov et al. proposed cellular structures based on periodic functions and obtained metamorphoses inside the structures by using gradient unit cells\cite{hollister2002optimal}. 
+Furthermore, they systematically investigated the relationships between porosity and compressive or tensile strength of porous glass-ceramic scaffolds from morphological, architectural and mechanical viewpoints. 
+
+However, the capabilities of these current strategies are quite limited when it comes to constructing more complicated composite structures (such as those found in natural porous structures). Thus, the motivation for this paper was to develop a simple but generalized method for generating complex target structures\cite{yang2017building}.
+
+\subsection{Building of porous structure by using equation}
+As the framework of the method, we first need to find appropriate interface boundaries for subspaces based on
+given control elements (such as points, line segments, polylines, or polygons). Second, we arrange the needed
+substructures within each subspace to integrate a composite porous structure (such as hybrid structures, functionally gradient structures, hierarchical structures, random structures, and their combinations). Conveniently, these two steps can be integrated in one ISB expression. Based on the resulting models, we show
+that it is easy to fabricate desired porous structures using AM techniques.
+
+Primitive(types P) TPMS
+\begin{equation}
+    \phi_P = cos(ax) + cos(by) +cos(cz) + p
+\end{equation}
+
+Diamond (type D) TPMS
+\begin{equation}
+    \phi_D = cos(ax)cos(by)cos(cz) - sin(ax)sin(by)sin(cz) + p
+\end{equation}
+
+Gyroid(type G) TPMS
+\begin{equation}
+    \phi_G = cos(ax)sin(by) + cos(by)sin(cz) + cos(cz)sin(ax) + p
+\end{equation}
+
+and sheet TPMS
+\begin{equation}
+    \phi = m - |\phi_{\theta}|
+\end{equation}
+
+where inequality $\phi > 0$ represents the solids, $\phi < 0$ represents the interfaces. Parameters a,b, and c control the pore sizes in the x,y, and z directions, respectively. Parameter p controls the porosity. $\phi_{\theta}$ can be replaced with $\phi_P$,$\phi_D$, and $\phi_G$, and m is offset.
+\subsubsection{Generating anisotropic porous architecture using control elements}
+In Cartesian space $R^3$, the subspaces that comprise each controlelement (e.g., points or line segments) are first constructed. Then,given ISB architectures are assigned to these subspaces. As a result,the final structure can be defined by $\phi \geq 0$, where $\phi$ is defined by 
+\begin{equation}
+    \phi = \sum_{i=1}^n W_i(x) . \phi_i(x)
+\end{equation}
+The weight functions, $w_i(x)$, are defined by
+\begin{equation}
+    w_i(x) = {{1 \over{1 + e^{k_id_i(x)^2}}}\over{\sum_{j=1}^n {1 \over{1 + e^{k_id_i(x)^2}}}}}
+\end{equation}
+where $d_i(x)$ indicates the distance field of the ith control elements,the ith subspace comprises the ith control element, the ith substructure $\phi_i \geq 0$ is assigned to the ith subspace, $k_i$ are transition factors for the ith subspace, n is the number of control elements, and x is the three-dimensional (3D) spatial coordinate vector. Obviously, we have $\sum_{i=1}^n w_i(x)=1$.The smooth weight function in Eq. (6) guarantees the smooth transitions
+between the contact areas. 
+Eq. (6) implies a spatial partition mechanism. The ith subspace is actually defined as the region. 
+\begin{equation}
+    w_i(x) \geq maxw_j(x)_{j \neq i}
+\end{equation}
+where ‘=' indicates the interface boundary. In the ith subspace, we have$W_i(x) \to 1$ and $w_j(x) \to 0 (j \neq i)$ when $k_i$ is sufficiently large; thus, based on Eqs. (5) and (6), we have $\phi \to \phi_i(x)$ . Therefore, the ith substructure is assigned in the ith subspace.
+Furthermore, when control elements1, 2, ..., and m indicate one subspace, this subspace can be defined by
+\begin{equation}
+    maxw_i(x) ,i=1 to i=m \geq maxw_j(x) ,j=m+1, to j=n
+\end{equation}
+
+Eqs. (7) and (8) are naturally included in Eqs. (5) and (6) when constructing a structure. Below, we introduce
+the different forms of $d_i(x)$ for different control elements.
+
+\subsubsubsection{Distance field of a control point. The distance field of a control point is defined by} 
+\begin{equation}
+d_i(x) = ||x - x_i||    
+\end{equation}
+
+In essence, subspaces constructed by control points are Voronoi cells. 
+\subsubsubsection{Distance field of a control line segment}
+In Cartesian space, $R^3$ a control line segment generated by two points, x1 and x2, can be defined by
+\begin{equation}
+ x = x_1 + (x_2 - x_1)t 
+\end{equation}
+
+For different t, Eq. (10) represents the interior and exterior of the line segment, respectively. So the distance field of this line segment is defined in a piecewise manner.
+
+\begin{equation}
+    d(x) = \begin{dcases}
+    || x-x_1|| &t < 0 \\
+    ||x-x_t|| &0 \leq t \leq 1 \\
+    ||x-x_2|| & t >1
+    \end{dcases}
+\end{equation}
+ where t and $x_t$ are determined by the equation 
+ 
+ \begin{equation}
+    \begin{dcases}
+    (x_t -x).(x_2 - x_1)=0 \\
+    x_t = x_1 + (x_2-x_1)t
+    \end{dcases}
+\end{equation}
+
+where indicates the dot product operation for two vectors. We can approximate the piecewise function, i.e., Eq. (11), using a continuous function for structural smooth purpose by
+
+\begin{equation}
+    d(x) = {{||x-x_1||}\over{1+e^{k_dt}}} + {{||x-x_t||}\over{(1+e^{-k_dt})(1+e^{k_d(t-1)})}} +{{||x-x_2||}\over{1+e^{-k_d(t-1)}}}
+\end{equation}
+
+\subsection{Material Used}
+We have used two types of composite material:- Metamaterial and Photonic crystal.
+
+\subsubsection{\textbf{Metamaterial}}
+A metamaterial is any material engineered to have a property that is not found in naturally occurring materials. These are the materials that extract their properties from their structure rather than the material of which they are composed of. During the past ten years, a great interest in the research of metamaterials has been observed. Metamaterials are artificially invented materials that show the properties which are not detected in naturally occurring materials. Metamaterials exhibits negative permittivity and/ or negative permeability \cite{cai2010optical}.
+
+Metamaterials are artificial materials which have the electromagnetic properties that may not be found in nature. The unusual properties of a metamaterial have led to the development of metamaterial antennas, sensors and metamaterial lenses for miniature wireless systems which are more efficient than their conventional
+counterparts. Metamaterials exhibit a very sensitive response to the strain, dielectric media, chemical and biological sensing applications.
+
+
+Metamaterials are artificial periodic structures with lattice constants that are much smaller than the wavelength of the incident radiation. Therefor providing negative refractive index characteristics \cite{koushick2018investigation}.
+A split-ring resonator (SRR) is one of the metamaterial particles that offer negative permeability, while complementary split-ring resonator (CSRR), the duality of SRR, interacts with the electric field and introduces negative permittivity \cite{cheng2011compact}.
+
+Metamaterial are usually implemented in a periodic structure. It is a soft option to design and fabricate it by
+recurring structure of unit cells. A unit cell is a combination of SRR and wire structure which is shown in figure. An array of unit cells may be used to get this structure. Rectangular SRR is described below:
+
+\begin{figure}[H]
+    \centering
+    \subfloat[a]{{\includegraphics[width =6cm]{WhatsApp Image 2021-11-27 at 8.07.26 PM.jpeg} }}
+    \qquad
+    \subfloat[b]{{\includegraphics[width=6cm]{WhatsApp Image 2021-11-27 at 8.11.10 PM (1).jpeg}}
+    \caption{Structure of Unit Cell: (a)Combination of wire and SRR as unit cell, (b)Circular SRR}
+    \label{fig:my_label}
+\end{figure}
+
+\subsubsection{photonic crystal}
+A photonic crystal is an optical nanostructure in which the refractive index changes periodically.Photonic
+crystals are composed of periodic dielectric, metallo-dielectric or even superconductor microstructures
+or nanostructures that affect electromagnetic wave propagation. Photonic crystal are periodic optical nanostructures that can control light, specifically photons. Such crystals
+occur in nature in the form of structural coloration-like the natural microstructures.
+
+\section{Command and Output}
+\subsection{Code}
+
+\lstinputlisting{matlab.m}`
+
+\subsection{Output}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width= 7cm]{WhatsApp Image 2021-11-28 at 4.39.41 PM.jpeg}
+    \caption{2D Unit Cell}
+    \label{fig:my_label}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width= 16cm]{WhatsApp Image 2021-11-28 at 4.43.34 PM.jpeg}
+    \caption{Analog Grating , Binary Grating}
+    \label{fig:my_label}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width= 16cm]{WhatsApp Image 2021-11-28 at 4.42.04 PM.jpeg}
+    \caption{Unit Cell , FFT2, Truncated FFT2}
+    \label{fig:my_label}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width= 16cm]{WhatsApp Image 2021-11-28 at 4.43.34 PM.jpeg}
+    \caption{Unit Cell , FFT2, Truncated Unit Cell,Truncated FFT2, Reconstructed Unit Cell}
+    \label{fig:my_label}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width= 16cm]{WhatsApp Image 2021-11-28 at 4.43.46 PM.jpeg}
+    \caption{Spatially Varient Lattice}
+    \label{fig:my_label}
+\end{figure}
+
+\section{Results and Discussions}
+We prepared an unit cell ,calculated grating vectors and generated spatially variant lattices. Mainly we created a
+2D and a 3D structure of crystal lattices using MATLAB code which resembles like a bone. We also studied and found about the porous structure of the bone.
+
+\section{Conclusion}
+Cellular structures consist of lattices. Lattices have many outstanding properties such as lightweight, high
+strength, absorbing energy, and reducing vibration, which has been extensively studied and concerned. The
+mechanical properties of lattice structure are the fundamental aspects for the design of lattices. Only when the
+lattice structure with good mechanical properties is designed,because of excellent properties, lattice structures
+have been widely used in bio-engineering field.
+
+\section{Acknowledgement}
+We made an effort to do this project. However, without the kind help and assistance of Dr. Nishant Kumar Singh, it would not have been possible. To him, we would like to extend our heartfelt thanks For his guidance and continuous monitoring, as well as providing necessary
+information about the project and also for their assistance in completing the project.
+
+\printbibliography
+\end{document}
+    
+
